@@ -53,6 +53,9 @@ HOW TO INSTALL Microsoft.DXSDK.D3DX
 #define SCREEN_WIDTH 760
 #define SCREEN_HEIGHT 730
 
+#define TEXTURES_DIR L"textures"
+#define TEXTURE_PATH_MARIO TEXTURES_DIR "\\mario.png"
+
 LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch (message) {
@@ -93,7 +96,7 @@ void Render()
 
 	FLOAT NewBlendFactor[4] = { 0,0,0,0 };
 	pD3DDevice->OMSetBlendState(g->GetAlphaBlending(), NewBlendFactor, 0xffffffff);
-
+	
 	CGame::GetInstance()->GetCurrentScene()->Render();
 
 	spriteHandler->End();
@@ -203,7 +206,7 @@ int WINAPI WinMain(
 
 
 	//IMPORTANT: this is the only place where a hardcoded file name is allowed ! 
-	game->Load(L"mario-sample.txt");  
+	game->Load(L"mario-sample.txt");
 
 	SetWindowPos(hWnd, 0, 0, 0, SCREEN_WIDTH*2, SCREEN_HEIGHT*2, SWP_NOMOVE | SWP_NOOWNERZORDER | SWP_NOZORDER);
 
